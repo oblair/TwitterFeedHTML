@@ -1,0 +1,40 @@
+body{
+   font-family: sans-serif;
+/*    position: relative;*/
+}
+main{
+    background-image: url("http://placehold.it/600x450");
+    position: fixed; 
+    left: 0;
+    top: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto; 
+    background-size: cover;
+}
+
+section{
+    background-color: rgba(0,0,0,0.2);
+    width:200px;
+    padding:5px;
+    position: absolute;
+    top:50%;
+    left:50%;
+}
+
+section p{
+    margin:0;
+}
+
+.tweet{
+    color:white;
+}
+
+.author{
+    color:red;
+}
+
+.timestamp{
+    color:blue;
+}
