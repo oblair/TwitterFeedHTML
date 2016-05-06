@@ -9,7 +9,7 @@ $consumer_key = 'UBUIPqMEJC6SmzGcy9VrQnQYI';
 $consumer_secret = 'cAklXOStxBzt1lFnuo2AwnTiV2ZYBbaWYRuRZhdPZucBhopTXS';
 $user_id = '465928689';
 $screen_name = 'TimTurnidge';
-$count = 15;
+$count = 5;
 $search_param = '%23coca4';
 
 $twitter_url = 'search/tweets.json';

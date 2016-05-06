@@ -3,7 +3,7 @@ body{
 /*    position: relative;*/
 }
 main{
-    background-image: url("http://placehold.it/600x450");
+/*    background-image: url("http://placehold.it/600x450");*/
     position: fixed; 
     left: 0;
     top: 0;
@@ -12,6 +12,7 @@ main{
     width: auto; 
     height: auto; 
     background-size: cover;
+    z-index: -1;
 }
 
 section{
