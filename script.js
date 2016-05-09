@@ -37,7 +37,9 @@ function tick(){
 function displayTweet(tweet_index){
     $('.debug').html(tweet_index);
     $('.tweet').html(tweet_array[tweet_index].text);
-    $('.author').html(tweet_array[tweet_index].user.name);
+    $('.author img').attr('src', tweet_array[tweet_index].user.profile_image_url);
+    $('.name').html(tweet_array[tweet_index].user.name);
+    $('.screen-name').html('@' + tweet_array[tweet_index].user.screen_name);
     $('.timestamp').html(tweet_array[tweet_index].created_at);
     
     if(tweet_array[tweet_index].entities.media){
