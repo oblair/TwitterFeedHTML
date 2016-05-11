@@ -5,7 +5,8 @@ var count = 0;
 
 $(document).ready(function(){
     getTweets();
-})
+    initControl();
+});
 
 function getTweets(){
     $.ajax({
@@ -28,7 +29,7 @@ function getTweets(){
 
 function tick(){
     displayTweet(count);
-    count++
+    count++;
     if(count > tweet_array.length - 1){
         count = 0;
     }
@@ -42,8 +43,18 @@ function displayTweet(tweet_index){
     $('.screen-name').html('@' + tweet_array[tweet_index].user.screen_name);
     $('.timestamp').html(parseTwitterDate(tweet_array[tweet_index].created_at));
     
+        var tweet_text = tweet_array[tweet_index].text;
+    var n = tweet_text.indexOf(' #');
+    console.log(n);
+    
     if(tweet_array[tweet_index].entities.media){
-        $('main').css({'background-image': 'url('+ tweet_array[tweet_index].entities.media[0].media_url +')'})
+        $('main').css({'background-image': 'url('+ tweet_array[tweet_index].entities.media[0].media_url +')'});
+//        if(tweet_array[tweet_index].entities.media[0].sizes.large.h >= tweet_array[tweet_index].entities.media[0].sizes.large.w){
+//            //portrait
+//            $('main').css({'background-position': 'right'});
+//        }else{
+//            //landscape
+//        }
     }else{
         $('main').css({'background-image': 'none'})
     }
@@ -53,10 +64,19 @@ function displayTweet(tweet_index){
     }else{
         $('.tweet-type').html('tweeted');
     }
+    
+    scanText();
 }
 
+function initControl(){
+    $('main').click(function(){
+        clearInterval(timer);
+    })
+}
 
-
+function scanText(){
+    $('.tweet').highlight("#+\w+.\b");
+}
 
 // thanks Brady: http://stackoverflow.com/users/367154/brady
 function parseTwitterDate(twitter_date) {

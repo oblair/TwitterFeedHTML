@@ -14,7 +14,8 @@ main{
     width: auto; 
     height: auto; 
     background-size: contain;
-    background-position: center;
+    background-position: right;
+    background-repeat: no-repeat;
     z-index: -1;
     background-color: #00498e;
 }
@@ -39,7 +40,7 @@ article p{
     line-height: 1.4;
     margin:0 0 10px 0;
 }
-.tag{
+.highlight{
     color:rgb(53, 141, 152);
 }
 
@@ -68,5 +69,5 @@ article p{
 }
 
 .debug{
-    display: none;
+/*    display: none;*/
 }
