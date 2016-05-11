@@ -1,8 +1,8 @@
 body{
     font-family: 
-       Arial,
-       sans-serif;
-
+        AktivGrotesk,
+        Arial,
+        sans-serif;
 }
 
 main{
@@ -16,44 +16,57 @@ main{
     background-size: contain;
     background-position: center;
     z-index: -1;
-    background-color: #f2f2f2;
+    background-color: #00498e;
 }
 
 article{
     background-color: rgba(255,255,255,0.95);
-    width:80%;
-    padding:5px;
+    width:66%;
+    padding: 10px 20px;
     position: absolute;
     top:50%;
-/*    left:50%;*/
+/*    left:20px;*/
 }
 
-section p{
+article p{
     margin:0;
 }
 
 .tweet{
-    color:#111;
+    color: #000;
+    font-weight: bold;
+    font-size: 2.5em;
+    line-height: 1.4;
+    margin:0 0 10px 0;
+}
+.tag{
+    color:rgb(53, 141, 152);
+}
+
+.metadata{
     font-size: 2em;
-}
-
-.author{
-    font-size: 1em;
     line-height: 48px;
+    color:#666;
 }
-
-.author img{
+.metadata img{
     width: 48px;
     float:left;
-    margin: 0 20px 0 0;
+    margin: 0 5px 0 0;
 }
-
-.author .screen-name{
-    padding: 0 0 0 20px;
-    color:#666;
+.metadata .name{
+    color:#000;
 }
-
-.timestamp{
-    color:#666;
+.metadata .screen-name{
+    padding: 0 0 0 10px;
+    margin: 0 5px 0 0;
+}
+.metadata .tweet-type{
+    margin: 0 5px 0 0;
+}
+.metadata .timestamp{
     font-size: 1em;
+}
+
+.debug{
+    display: none;
 }
