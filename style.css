@@ -1,9 +1,11 @@
 body{
-   font-family: sans-serif;
-/*    position: relative;*/
+    font-family: 
+        AktivGrotesk,
+        Arial,
+        sans-serif;
 }
+
 main{
-    background-image: url("http://placehold.it/600x450");
     position: fixed; 
     left: 0;
     top: 0;
@@ -11,30 +13,60 @@ main{
     min-height: 100%;
     width: auto; 
     height: auto; 
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
+    z-index: -1;
+    background-color: #00498e;
 }
 
-section{
-    background-color: rgba(0,0,0,0.2);
-    width:200px;
-    padding:5px;
+article{
+    background-color: rgba(255,255,255,0.95);
+    width:66%;
+    padding: 10px 20px;
     position: absolute;
     top:50%;
-    left:50%;
+/*    left:20px;*/
 }
 
-section p{
+article p{
     margin:0;
 }
 
 .tweet{
-    color:white;
+    color: #000;
+    font-weight: bold;
+    font-size: 2.5em;
+    line-height: 1.4;
+    margin:0 0 10px 0;
+}
+.tag{
+    color:rgb(53, 141, 152);
 }
 
-.author{
-    color:red;
+.metadata{
+    font-size: 2em;
+    line-height: 48px;
+    color:#666;
+}
+.metadata img{
+    width: 48px;
+    float:left;
+    margin: 0 5px 0 0;
+}
+.metadata .name{
+    color:#000;
+}
+.metadata .screen-name{
+    padding: 0 0 0 10px;
+    margin: 0 5px 0 0;
+}
+.metadata .tweet-type{
+    margin: 0 5px 0 0;
+}
+.metadata .timestamp{
+    font-size: 1em;
 }
 
-.timestamp{
-    color:blue;
+.debug{
+    display: none;
 }

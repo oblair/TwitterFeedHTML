@@ -9,8 +9,8 @@ $consumer_key = 'UBUIPqMEJC6SmzGcy9VrQnQYI';
 $consumer_secret = 'cAklXOStxBzt1lFnuo2AwnTiV2ZYBbaWYRuRZhdPZucBhopTXS';
 $user_id = '465928689';
 $screen_name = 'TimTurnidge';
-$count = 15;
-$search_param = '%23coca4';
+$count = 5;
+$search_param = '%23makethespace%20OR%20%23coca158%20OR%20%23coca379%20OR%20%23tweetmyproject%20OR%20%23spatial3%20OR%20%23spatial4%20OR%20%23spatialtype%20OR%20%23designexpedition%20OR%20%23coca1%20OR%20%23coca2%20OR%20%23coca3%20OR%20%23coca4%20OR%20%23coca494%20OR%20%23coca454';
 
 $twitter_url = 'search/tweets.json';
 $twitter_url .= '?q=' . $search_param;
