@@ -1,0 +1,12 @@
+@font-face {
+	font-family: 'ThreeSix 10';
+	src: url(ThreeSix/ThreeSix10-072Regular.otf) format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'ThreeSix 10';
+	src: url(ThreeSix/ThreeSix10-126Heavy.otf) format('opentype');
+	font-weight: bold;
+	font-style: normal;
+}
