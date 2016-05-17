@@ -16,16 +16,16 @@ main{
     background-size: contain;
     background-position: center;
     z-index: -1;
-    background-color: #00498e;
+    background-color: #444;
 }
 
 article{
-    background-color: rgba(255,255,255,0.95);
-    width:66%;
-    padding: 10px 20px;
+    background-color: rgba(0,0,0,0.95);
+    max-width: 66%;/*    article size and max size is set in script*/
+    padding: 2vw;
     position: absolute;
-    top:50%;
-/*    left:20px;*/
+    top:30%;
+    left:20%;
 }
 
 article p{
@@ -33,38 +33,33 @@ article p{
 }
 
 .tweet{
-    color: #000;
-    font-weight: bold;
-    font-size: 2.5em;
-    line-height: 1.4;
-    margin:0 0 10px 0;
+    color: #fff;
+    font-size: 3vw;
+    line-height: 1;
+    margin: 0 0 2vw 0;
 }
 .tag{
-    color:rgb(53, 141, 152);
+    color:#00ccff ;
 }
 
 .metadata{
-    font-size: 2em;
-    line-height: 48px;
-    color:#666;
+    font-size: 2vw;
+    font-weight: bold;
+    color:#00ccff ;
 }
 .metadata img{
-    width: 48px;
+    height: 6vw;
+    width: 6vw;
     float:left;
-    margin: 0 5px 0 0;
+    margin: 0 2vw 0 0;
 }
 .metadata .name{
-    color:#000;
 }
 .metadata .screen-name{
-    padding: 0 0 0 10px;
-    margin: 0 5px 0 0;
 }
 .metadata .tweet-type{
-    margin: 0 5px 0 0;
 }
 .metadata .timestamp{
-    font-size: 1em;
 }
 
 .debug{
