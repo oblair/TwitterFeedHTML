@@ -6,6 +6,8 @@ var count = 0;
 $(document).ready(function(){
     getTweets();
     initControl();
+    highlight('/(#)(\\w+)|(#)/', 'hashtag');
+    highlight('/(@)(\\w+)|(@)/', 'user');
 });
 
 function getTweets(){
@@ -43,9 +45,7 @@ function displayTweet(tweet_index){
     $('.screen-name').html('@' + tweet_array[tweet_index].user.screen_name);
     $('.timestamp').html(parseTwitterDate(tweet_array[tweet_index].created_at));
     
-        var tweet_text = tweet_array[tweet_index].text;
-    var n = tweet_text.indexOf(' #');
-    console.log(n);
+    var tweet_text = tweet_array[tweet_index].text;
     
     if(tweet_array[tweet_index].entities.media){
         $('main').css({'background-image': 'url('+ tweet_array[tweet_index].entities.media[0].media_url +')'});
@@ -65,7 +65,8 @@ function displayTweet(tweet_index){
         $('.tweet-type').html('tweeted');
     }
     
-    scanText();
+    highlight('/(#)(\\w+)|(#)/', 'hashtag');
+    highlight('/(@)(\\w+)|(@)/', 'user');
 }
 
 function initControl(){
@@ -74,8 +75,14 @@ function initControl(){
     })
 }
 
-function scanText(){
-    $('.tweet').highlight("#+\w+.\b");
+function highlight(expression, class_name){
+    var flags = expression.replace(/.*\/([gimy]*)$/, '$1');
+    var pattern = expression.replace(new RegExp('^/(.*?)/' + flags + '$'), '$1');
+    var regex = new RegExp(pattern, flags);
+    var options = {
+        className: class_name
+    };
+    $('.tweet').markRegExp(regex, options);
 }
 
 // thanks Brady: http://stackoverflow.com/users/367154/brady

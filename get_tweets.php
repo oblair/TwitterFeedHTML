@@ -9,16 +9,12 @@ $consumer_key = 'UBUIPqMEJC6SmzGcy9VrQnQYI';
 $consumer_secret = 'cAklXOStxBzt1lFnuo2AwnTiV2ZYBbaWYRuRZhdPZucBhopTXS';
 $user_id = '465928689';
 $screen_name = 'TimTurnidge';
-$count = 25;
-$search_param = '%23makethespace%20OR%20%23coca158%20OR%20%23coca379%20OR%20%23tweetmyproject%20OR%20%23spatial3%20OR%20%23spatial4%20OR%20%23spatialtype%20OR%20%23designexpedition%20OR%20%23coca1%20OR%20%23coca2%20OR%20%23coca3%20OR%20%23coca4%20OR%20%23coca494%20OR%20%23coca454';
+$count = 50;
+$search_param = '%23makethespace%20OR%20%23coca158%20OR%20%23coca379%20OR%20%23tweetmyproject%20OR%20%23cocaspace%20OR%20%23spatial2%20OR%20%23spatial3%20OR%20%23spatial4%20OR%20%23spatialtype%20OR%20%23designexpedition%20OR%20%23coca1%20OR%20%23coca2%20OR%20%23coca3%20OR%20%23coca4%20OR%20%23coca494%20OR%20%23coca454';
 
 $twitter_url = 'search/tweets.json';
 $twitter_url .= '?q=' . $search_param;
 $twitter_url .= '&count=' . $count;
-
-//$twitter_url .= '?user_id=' . $user_id;
-//$twitter_url .= '&screen_name=' . $screen_name;
-//$twitter_url .= '&count=' . $count;
 
 $twitter_proxy = new TwitterProxy(
 	$oauth_access_token,			// 'Access token' on https://apps.twitter.com
