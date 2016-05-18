@@ -1,6 +1,6 @@
 body{
     font-family: 
-        AktivGrotesk,
+        "ThreeSix 10",
         Arial,
         sans-serif;
     margin:0;
@@ -19,7 +19,6 @@ main{
 /*    background-repeat: no-repeat;*/
     background-image: url(http://placehold.it/700x200);
     z-index: -1;
-    
 }
 main .color-layer{
     background-color: rgba(0, 153, 202,0.8);
@@ -36,15 +35,16 @@ main .tweet-image{
     width:100%;
     height:auto;
     right:0;
+    background-color: #444;
 }
 
 article{
-    background-color: rgba(255,255,255,0.95);
-    width:66%;
-    padding: 10px 20px;
+    background-color: rgba(0,0,0,0.95);
+    max-width: 66%;/*    article size and max size is set in script*/
+    padding: 2vw;
     position: absolute;
-    bottom:5%;
-/*    left:20px;*/
+    top:30%;
+    left:20%;
 }
 
 article p{
@@ -52,12 +52,12 @@ article p{
 }
 
 .tweet{
-    color: #000;
-    font-weight: bold;
-    font-size: 2.5em;
-    line-height: 1.4;
-    margin:0 0 10px 0;
+    color: #fff;
+    font-size: 3vw;
+    line-height: 1;
+    margin: 0 0 2vw 0;
 }
+<<<<<<< HEAD
 .hashtag{
     background:transparent;
     color:rgb(0, 153, 202);
@@ -76,19 +76,38 @@ article p{
     width: 96px;
     float:left;
     margin: 0 10px 0 0;
+=======
+.tag{
+    color:#00ccff ;
+}
+
+.metadata{
+    font-size: 2vw;
+    font-weight: bold;
+    color:#00ccff ;
+}
+.metadata img{
+    height: 6vw;
+    width: 6vw;
+    float:left;
+    margin: 0 2vw 0 0;
+>>>>>>> oblair/master
 }
 .metadata .name{
-    color:#000;
 }
 .metadata .screen-name{
+<<<<<<< HEAD
     padding: 0 0 0 0px;
     margin: 0 0 0 0;
 }
 .metadata .tweet-type{
     margin: 0 0 0 0;
+=======
+}
+.metadata .tweet-type{
+>>>>>>> oblair/master
 }
 .metadata .timestamp{
-    font-size: 1em;
 }
 
 .debug{
