@@ -40,11 +40,13 @@ main .tweet-image{
 
 article{
     background-color: rgba(0,0,0,0.95);
-    max-width: 66%;/*    article size and max size is set in script*/
+    max-width: 66%;     /* article size and max size is set in script.js */
+    margin-left:-33%;   /* this + left:50% will centre the element */
+    box-sizing: border-box;
     padding: 2vw;
     position: absolute;
     top:30%;
-    left:20%;
+    left:50%;
 }
 
 article p{
@@ -57,55 +59,32 @@ article p{
     line-height: 1;
     margin: 0 0 2vw 0;
 }
-<<<<<<< HEAD
+
 .hashtag{
     background:transparent;
-    color:rgb(0, 153, 202);
+    color:#00ccff ;
 }
 .user{
     background:transparent;
-    color:rgb(255, 153, 202);
-}
-
-.metadata{
-    font-size: 1.6em;
-    line-height: 32px;
-    color:#666;
-}
-.metadata .profile-image{
-    width: 96px;
-    float:left;
-    margin: 0 10px 0 0;
-=======
-.tag{
-    color:#00ccff ;
+    color:#ff1694;
 }
 
 .metadata{
     font-size: 2vw;
-    font-weight: bold;
-    color:#00ccff ;
+    color:#eee;
+    line-height: 2vw;
 }
-.metadata img{
-    height: 6vw;
+.metadata .profile-image{
     width: 6vw;
     float:left;
     margin: 0 2vw 0 0;
->>>>>>> oblair/master
 }
 .metadata .name{
+    color:#00ccff
 }
 .metadata .screen-name{
-<<<<<<< HEAD
-    padding: 0 0 0 0px;
-    margin: 0 0 0 0;
 }
 .metadata .tweet-type{
-    margin: 0 0 0 0;
-=======
-}
-.metadata .tweet-type{
->>>>>>> oblair/master
 }
 .metadata .timestamp{
 }
