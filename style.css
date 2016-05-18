@@ -13,15 +13,19 @@ main{
     min-height: 100%;
     width: auto; 
     height: auto; 
-    background-size: contain;
-    background-position: center;
+    background-size: contain;    
+    background-position: right top;
+/*    background-repeat: no-repeat;*/
+    background-image: url(http://placehold.it/700x200);
+    
     z-index: -1;
     background-color: #444;
 }
 
 article{
     background-color: rgba(0,0,0,0.95);
-    max-width: 66%;/*    article size and max size is set in script*/
+    width: 66%;  
+/*    article size and max size is set in script*/
     padding: 2vw;
     position: absolute;
     top:30%;
@@ -38,8 +42,13 @@ article p{
     line-height: 1;
     margin: 0 0 2vw 0;
 }
-.tag{
-    color:#00ccff ;
+.hashtag{
+    background:transparent;
+    color:#00ccff;
+}
+.user{
+    background:transparent;
+    color:#00ccff;
 }
 
 .metadata{

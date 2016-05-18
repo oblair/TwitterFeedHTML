@@ -1,11 +1,23 @@
 var tweet_array = [];
 var timer;
-var delay = 5000;               // milliseconds:int; time delay between tweets
-var count = 0;
+var delay = 10000;               // milliseconds:int; time delay between tweets
+var loops_to_reset = 1;         // loops:int; how many times to loop through the tweets before refreshing
+var count = 99;
+var loops = 0;
 
 $(document).ready(function(){
     getTweets();
-})
+    initControl();
+    highlight('/(#)(\\w+)|(#)/', 'hashtag');
+    highlight('/(@)(\\w+)|(@)/', 'user');
+});
+
+function reset(){
+    loops = 0;
+    tweet_array = [];
+    clearInterval(timer);
+    getTweets();
+};
 
 function getTweets(){
     $.ajax({
@@ -28,9 +40,13 @@ function getTweets(){
 
 function tick(){
     displayTweet(count);
-    count++
-    if(count > tweet_array.length - 1){
-        count = 0;
+    count--;
+    if(count <= 0){
+        count = 100;
+        loops++;
+        if(loops == loops_to_reset){
+            reset();
+        }
     }
 }
 
@@ -42,10 +58,25 @@ function displayTweet(tweet_index){
     $('.screen-name').html('@' + tweet_array[tweet_index].user.screen_name);
     $('.timestamp').html(parseTwitterDate(tweet_array[tweet_index].created_at));
     
+    var tweet_text = tweet_array[tweet_index].text;
+    
     if(tweet_array[tweet_index].entities.media){
-        $('main').css({'background-image': 'url('+ tweet_array[tweet_index].entities.media[0].media_url +')'})
+        var display_ratio = $(document).width() / $(document).height();
+        var image_ratio = tweet_array[tweet_index].entities.media[0].sizes.large.w / tweet_array[tweet_index].entities.media[0].sizes.large.h
+        
+        $('main').css({'background-image': 'url('+ tweet_array[tweet_index].entities.media[0].media_url +')'});
+        $('.tweet-image').attr({'src': tweet_array[tweet_index].entities.media[0].media_url}).css({'display': 'block'});
+        if(display_ratio >= image_ratio){
+            //image is narrow
+            $('main').css({'background-position': 'right top'});
+            $('.tweet-image').css({'width': 'auto', 'height': '100%'});
+        }else{
+            //image is wide
+            $('.tweet-image').css({'width': '100%', 'height': 'auto'});
+        }
     }else{
-        $('main').css({'background-image': 'none'})
+        $('main').css({'background-image': 'none'});
+        $('.tweet-image').attr({'src': '#'}).css({'display': 'none'});
     }
     
     if(tweet_array[tweet_index].retweeted_status){
@@ -53,10 +84,26 @@ function displayTweet(tweet_index){
     }else{
         $('.tweet-type').html('tweeted');
     }
+    
+    highlight('/(#)(\\w+)|(#)/', 'hashtag');
+    highlight('/(@)(\\w+)|(@)/', 'user');    
 }
 
+function initControl(){
+    $('main').click(function(){
+        clearInterval(timer);
+    })
+}
 
-
+function highlight(expression, class_name){
+    var flags = expression.replace(/.*\/([gimy]*)$/, '$1');
+    var pattern = expression.replace(new RegExp('^/(.*?)/' + flags + '$'), '$1');
+    var regex = new RegExp(pattern, flags);
+    var options = {
+        className: class_name
+    };
+    $('.tweet').markRegExp(regex, options);
+}
 
 // thanks Brady: http://stackoverflow.com/users/367154/brady
 function parseTwitterDate(twitter_date) {
