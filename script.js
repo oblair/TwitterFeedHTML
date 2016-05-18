@@ -117,12 +117,20 @@ function articlesize(){
     }
     
     //random article position
-    setTimeout(function () {
-//        window.alert($('article').outerHeight());
-//        $('article').css({'top': ''+ ( Math.random() * (($(window).height()-20)-$('article').outerHeight()) ) +'px'});
-        $('article').css({'top': ''+ ( 10 + ( Math.random() * (( $(window).height() - $('article').outerHeight()) - 20 ) ) ) +'px'});
-        $('article').css({'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').outerWidth() - 20 ) ) ) +'px'});
-    }, 100);
+    //tweet image?
+    if(tweet_array[tweet_index].entities.media){
+        setTimeout(function () {
+            $('article').css({'top': ''+ ($(window).height() - $('article').outerHeight()) - 10 +'px'});
+            $('article').css({'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').outerWidth() - 20 ) ) ) +'px'});
+        }, 100);
+        
+    } else {
+        setTimeout(function () {
+            $('article').css({'top': ''+ ( 10 + ( Math.random() * (( $(window).height() - $('article').outerHeight()) - 20 ) ) ) +'px'});
+            $('article').css({'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').outerWidth() - 20 ) ) ) +'px'});
+        }, 100);
+        
+    }
 
 }
 
