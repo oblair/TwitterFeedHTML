@@ -21,6 +21,22 @@ main{
     z-index: -1;
     background-color: #444;
 }
+main .color-layer{
+    background-color: rgba(0, 153, 202,0.8);
+    position: fixed; 
+    left: 0;
+    top: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto; 
+}
+main .tweet-image{
+    position: absolute;
+    width:100%;
+    height:auto;
+    right:0;
+}
 
 article{
     background-color: rgba(0,0,0,0.95);
