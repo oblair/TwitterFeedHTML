@@ -112,7 +112,7 @@ function displayTweet(tweet_index){
 
 function initControl(){
     $('main').click(function(){
-        clearInterval(timer);
+//        clearInterval(timer);
         tick();
 //        window.alert("sometext");
     })
