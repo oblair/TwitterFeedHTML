@@ -1,0 +1,18 @@
+article{
+    width: 26%;  
+    padding: 1vw;
+}
+
+.tweet{
+    font-size: 2vw;
+    margin: 0 0 1vw 0;
+}
+
+.metadata{
+    font-size: 1.3vw;
+}
+.metadata img{
+    height: 4vw;
+    width: 4vw;
+    margin: 0 1vw 0 0;
+}

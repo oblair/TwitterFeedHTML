@@ -24,11 +24,11 @@ main{
 
 article{
     background-color: rgba(0,0,0,0.95);
-    width: 66%;  
+    width: 26%;  
 /*    article size and max size is set in script*/
     padding: 2vw;
     position: absolute;
-    top:30%;
+    top:10%;
     left:20%;
 }
 
