@@ -69,6 +69,7 @@ article p{
 
 .metadata{
     line-height: 2.7vw;
+    font-size: 2.5vw;
 }
 .metadata img{
     height: 8vw;
@@ -77,23 +78,19 @@ article p{
     margin: 0 2vw 0 0;
 }
 .metadata .name{
-    font-size: 2.5vw;
     color:#00ccff ;
 }
 .metadata .screen-name{
     font-family: "ThreeSix 10 ExtraLight";
     color:#00ccff ;
-    font-size: 2.5vw;
 }
 .metadata .tweet-type{
     font-family: "ThreeSix 10 ExtraLight";
     color:#fff;
-    font-size: 2.5vw;
 }
 .metadata .timestamp{
     font-family: "ThreeSix 10 ExtraLight";
     color:#fff;
-    font-size: 2.5vw;
 }
 
 .debug{
