@@ -105,7 +105,7 @@ function articlesize(){
         
     } else {
         //portrait screen
-        $('article').css({'width': ''+ ( $(window).width() / 2 ) +'px'});
+        $('article').css({'width': ''+ ( $(window).width() / 1.5 ) +'px'});
     }
     
     //random article position
