@@ -21,25 +21,6 @@ function reset(){
 
 function getTweets(){
     
-        
-
-    // set article size
-    if ( $(window).width() > $(window).height() ) {
-        //landscape
-        $('article').css({'width': ''+ ( $(window).width() / 4 ) +'px'});
-        //load landscape css which sets the vw font sizes.
-        $('<link>').appendTo('head').attr({type : 'text/css', rel : 'stylesheet'}).attr('href', 'style_landscape.css');
-        
-    } else {
-        //portrait screen
-        $('article').css({'width': ''+ ( $(window).width() / 2 ) +'px'});
-    }
-    
-    //random article position
-    $('article').css({'top': ''+ ( 10 + ( Math.random() * ( $(window).height() - $('article').height() - 20 ) ) ) +'px'});
-    $('article').css({'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').width() - 20 ) ) ) +'px'});
-
-    
     $.ajax({
 		url: 'get_tweets.php',
 		type: 'GET',
@@ -109,7 +90,25 @@ function displayTweet(tweet_index){
     highlight('/(@)(\\w+)|(@)/', 'user'); 
     
 
+    // set article size
+    if ( $(window).width() > $(window).height() ) {
+        //landscape
+        $('article').css({'width': ''+ ( $(window).width() / 4 ) +'px'});
+        //load landscape css which sets the vw font sizes.
+        $('<link>').appendTo('head').attr({type : 'text/css', rel : 'stylesheet'}).attr('href', 'style_landscape.css');
+        
+    } else {
+        //portrait screen
+        $('article').css({'width': ''+ ( $(window).width() / 2 ) +'px'});
+    }
+    
+    //random article position
+    $('article').css({'top': ''+ ( 10 + ( Math.random() * ( $(window).height() - $('article').height() - 20 ) ) ) +'px'});
+    $('article').css({'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').width() - 20 ) ) ) +'px'});
+
 }
+
+
 
 function initControl(){
     $('main').click(function(){
