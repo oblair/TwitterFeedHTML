@@ -6,6 +6,9 @@ var count = 99;
 var loops = 0;
 
 $(document).ready(function(){
+            
+    articlesize();
+
     getTweets();
     initControl();
     highlight('/(#)(\\w+)|(#)/', 'hashtag');
@@ -15,7 +18,7 @@ $(document).ready(function(){
 function reset(){
     loops = 0;
     tweet_array = [];
-    clearInterval(timer);
+    clearInterval(timer);    
     getTweets();
 };
 
@@ -89,7 +92,10 @@ function displayTweet(tweet_index){
     highlight('/(#)(\\w+)|(#)/', 'hashtag');
     highlight('/(@)(\\w+)|(@)/', 'user'); 
     
+    articlesize();
+}
 
+function articlesize(){
     // set article size
     if ( $(window).width() > $(window).height() ) {
         //landscape
