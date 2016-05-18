@@ -10,3 +10,9 @@
 	font-weight: bold;
 	font-style: normal;
 }
+@font-face {
+	font-family: 'ThreeSix 10 ExtraLight';
+	src: url(ThreeSix/ThreeSix10-036ExtraLight.otf) format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
