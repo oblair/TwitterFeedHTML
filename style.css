@@ -3,6 +3,7 @@ body{
         AktivGrotesk,
         Arial,
         sans-serif;
+    margin:0;
 }
 
 main{
@@ -14,10 +15,27 @@ main{
     width: auto; 
     height: auto; 
     background-size: contain;
-    background-position: right;
-    background-repeat: no-repeat;
+    background-position: right top;
+/*    background-repeat: no-repeat;*/
+    background-image: url(http://placehold.it/700x200);
     z-index: -1;
-    background-color: rgb(0, 176, 237);
+    
+}
+main .color-layer{
+    background-color: rgba(0, 153, 202,0.8);
+    position: fixed; 
+    left: 0;
+    top: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto; 
+}
+main .tweet-image{
+    position: absolute;
+    width:100%;
+    height:auto;
+    right:0;
 }
 
 article{
@@ -42,20 +60,20 @@ article p{
 }
 .hashtag{
     background:transparent;
-    color:rgb(0, 176, 237);
+    color:rgb(0, 153, 202);
 }
 .user{
     background:transparent;
-    color:rgb(118, 0, 237);
+    color:rgb(255, 153, 202);
 }
 
 .metadata{
-    font-size: 2em;
-    line-height: 48px;
+    font-size: 1.6em;
+    line-height: 32px;
     color:#666;
 }
-.metadata img{
-    width: 48px;
+.metadata .profile-image{
+    width: 96px;
     float:left;
     margin: 0 10px 0 0;
 }
@@ -74,5 +92,5 @@ article p{
 }
 
 .debug{
-/*    display: none;*/
+    display: none;
 }

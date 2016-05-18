@@ -1,7 +1,9 @@
 var tweet_array = [];
 var timer;
 var delay = 5000;               // milliseconds:int; time delay between tweets
+var loops_to_reset = 2;         // loops:int; how many times to loop through the tweets before refreshing
 var count = 0;
+var loops = 0;
 
 $(document).ready(function(){
     getTweets();
@@ -9,6 +11,13 @@ $(document).ready(function(){
     highlight('/(#)(\\w+)|(#)/', 'hashtag');
     highlight('/(@)(\\w+)|(@)/', 'user');
 });
+
+function reset(){
+    loops = 0;
+    tweet_array = [];
+    clearInterval(timer);
+    getTweets();
+};
 
 function getTweets(){
     $.ajax({
@@ -34,6 +43,10 @@ function tick(){
     count++;
     if(count > tweet_array.length - 1){
         count = 0;
+        loops++;
+        if(loops == loops_to_reset){
+            reset();
+        }
     }
 }
 
@@ -48,15 +61,22 @@ function displayTweet(tweet_index){
     var tweet_text = tweet_array[tweet_index].text;
     
     if(tweet_array[tweet_index].entities.media){
+        var display_ratio = $(document).width() / $(document).height();
+        var image_ratio = tweet_array[tweet_index].entities.media[0].sizes.large.w / tweet_array[tweet_index].entities.media[0].sizes.large.h
+        
         $('main').css({'background-image': 'url('+ tweet_array[tweet_index].entities.media[0].media_url +')'});
-//        if(tweet_array[tweet_index].entities.media[0].sizes.large.h >= tweet_array[tweet_index].entities.media[0].sizes.large.w){
-//            //portrait
-//            $('main').css({'background-position': 'right'});
-//        }else{
-//            //landscape
-//        }
+        $('.tweet-image').attr({'src': tweet_array[tweet_index].entities.media[0].media_url}).css({'display': 'block'});
+        if(display_ratio >= image_ratio){
+            //image is narrow
+            $('main').css({'background-position': 'right top'});
+            $('.tweet-image').css({'width': 'auto', 'height': '100%'});
+        }else{
+            //image is wide
+            $('.tweet-image').css({'width': '100%', 'height': 'auto'});
+        }
     }else{
-        $('main').css({'background-image': 'none'})
+        $('main').css({'background-image': 'none'});
+        $('.tweet-image').attr({'src': '#'}).css({'display': 'none'});
     }
     
     if(tweet_array[tweet_index].retweeted_status){
@@ -66,7 +86,7 @@ function displayTweet(tweet_index){
     }
     
     highlight('/(#)(\\w+)|(#)/', 'hashtag');
-    highlight('/(@)(\\w+)|(@)/', 'user');
+    highlight('/(@)(\\w+)|(@)/', 'user');    
 }
 
 function initControl(){
