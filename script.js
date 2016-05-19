@@ -22,6 +22,7 @@ $(window).load(function(){
 });
 
 function reset(){
+    console.log("reset")
     loops = 0;
     tweet_array = [];
     clearInterval(timer);    
@@ -48,17 +49,21 @@ function getTweets(){
 	});
 }
 
+
 function tick(){
-    displayTweet(count);
-    count--;
-    if(count <= 0){
-        count = 100;
+    if(count < 0){
+        count = 99;
         loops++;
         if(loops == loops_to_reset){
             reset();
         }
+    } else {
+        console.log(count)
+        displayTweet(count);
+        count--;
     }
 }
+
 
 function displayTweet(tweet_index){
     $('.debug').html(tweet_index);
@@ -91,6 +96,7 @@ function displayTweet(tweet_index){
     
     if(tweet_array[tweet_index].retweeted_status){
         $('.tweet-type').html('retweeted');
+        
     }else{
         $('.tweet-type').html('tweeted');
     }
@@ -107,18 +113,18 @@ function articlesize(){
     // set article size
     if ( $(window).width() > $(window).height() ) {
         //landscape
-        $('article').css({'width': ''+ ( $(window).width() / 3 ) +'px'});
+        $('article').css({'max-width': ''+ ( $(window).width() / 3 ) +'px'});
         //load landscape css which sets the vw font sizes.
         $('<link>').appendTo('head').attr({type : 'text/css', rel : 'stylesheet'}).attr('href', 'style_landscape.css');
         
     } else {
         //portrait screen
-        $('article').css({'width': ''+ ( $(window).width() / 1.5 ) +'px'});
+        $('article').css({'max-width': ''+ ( $(window).width() / 1.5 ) +'px'});
     }
     
     //random article position
     //tweet image?
-    if(tweet_array[tweet_index].entities.media){
+    if(tweet_array[count].entities.media){
         setTimeout(function () {
             $('article').css({'top': ''+ ($(window).height() - $('article').outerHeight()) - 10 +'px'});
             $('article').css({'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').outerWidth() - 20 ) ) ) +'px'});

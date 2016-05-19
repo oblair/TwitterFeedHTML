@@ -40,7 +40,7 @@ main .tweet-image{
 
 article{
     background-color: rgba(0,0,0,0.95);
-    width: 26%;  
+    max-width: 33%;  
 /*    article size and max size is set in script*/
     padding: 2vw;
     position: absolute;
