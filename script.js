@@ -40,6 +40,10 @@ function getTweets(){
             for(i in response.statuses){
                 tweet_array.push(response.statuses[i]);
             }
+            
+            console.log(tweet_array.length);
+            if(count > tweet_array.length){count = tweet_array.length - 1;}
+
             tick();
             timer =  setInterval(tick, delay);
 		},
