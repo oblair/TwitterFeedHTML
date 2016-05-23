@@ -6,20 +6,17 @@ var count = 99;
 var loops = 0;
 
 $(document).ready(function(){
-
     getTweets();
     initControl();
+    articlesize();
     highlight('/(#)(\\w+)|(#)/', 'hashtag');
     highlight('/(@)(\\w+)|(@)/', 'user');
 
 });
 
-
-$(window).load(function(){
-
+$(window).resize(function(){
     articlesize();
-
-});
+})
 
 function reset(){
     console.log("reset")
@@ -111,37 +108,35 @@ function displayTweet(tweet_index){
     articlesize();
 }
 
-
-
 function articlesize(){
     // set article size
     if ( $(window).width() > $(window).height() ) {
         //landscape
-        $('article').css({'max-width': ''+ ( $(window).width() / 3 ) +'px'});
-        //load landscape css which sets the vw font sizes.
-        $('<link>').appendTo('head').attr({type : 'text/css', rel : 'stylesheet'}).attr('href', 'style_landscape.css');
-        
+        $('article').css({
+            'max-width': ''+ ( $(window).width() / 3 ) +'px'
+        }).addClass('landscape')
+        .removeClass('portrait');
     } else {
         //portrait screen
-        $('article').css({'max-width': ''+ ( $(window).width() / 1.5 ) +'px'});
+        $('article').css({
+            'max-width': ''+ ( $(window).width() / 1.5 ) +'px'
+        }).removeClass('landscape')
+        .addClass('portrait');
     }
     
     //random article position
     //tweet image?
     if(tweet_array[count].entities.media){
-        setTimeout(function () {
-            $('article').css({'top': ''+ ($(window).height() - $('article').outerHeight()) - 10 +'px'});
-            $('article').css({'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').outerWidth() - 20 ) ) ) +'px'});
-        }, 100);
-        
+        $('article').css({
+            'top': ''+ ($(window).height() - $('article').outerHeight()) - 10 +'px',
+            'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').outerWidth() - 20 ) ) ) +'px'
+        });
     } else {
-        setTimeout(function () {
-            $('article').css({'top': ''+ ( 10 + ( Math.random() * (( $(window).height() - $('article').outerHeight()) - 20 ) ) ) +'px'});
-            $('article').css({'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').outerWidth() - 20 ) ) ) +'px'});
-        }, 100);
-        
+        $('article').css({
+            'top': ''+ ( 10 + ( Math.random() * (( $(window).height() - $('article').outerHeight()) - 20 ) ) ) +'px',
+            'left': ''+ ( 10 + ( Math.random() * ( $(window).width() - $('article').outerWidth() - 20 ) ) ) +'px'
+        });
     }
-
 }
 
 

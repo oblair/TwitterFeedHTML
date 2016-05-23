@@ -40,12 +40,19 @@ main .tweet-image{
 
 article{
     background-color: rgba(0,0,0,0.95);
-    max-width: 33%;  
 /*    article size and max size is set in script*/
-    padding: 2vw;
     position: absolute;
     top:10%;
     left:20%;
+}
+
+article.portrait{
+    max-width: 33%;
+    padding: 2vw;
+}
+article.landscape{
+    max-width: 26%;  
+    padding: 1vw;
 }
 
 article p{
@@ -54,10 +61,18 @@ article p{
 
 .tweet{
     color: #fff;
-    font-size: 3vw;
     line-height: 1.3;
+}
+.portrait .tweet{
+    font-size: 3vw;
     margin: 0 0 4vw 0;
 }
+.landscape .tweet{
+    font-size: 1.8vw;
+    margin: 0 0 2vw 0;
+}
+
+
 .hashtag{
     background:transparent;
     color:#00ccff;
@@ -67,15 +82,26 @@ article p{
     color:#00ccff;
 }
 
-.metadata{
+.portrait .metadata{
     line-height: 2.7vw;
     font-size: 2.5vw;
 }
-.metadata img{
+.landscape .metadata{
+    font-size: 1.3vw;
+    line-height: 1.5vw;
+}
+
+.portrait .metadata img{
     height: 8vw;
     width: 8vw;
     float:left;
     margin: 0 2vw 0 0;
+}
+
+.landscape .metadata img{
+    height: 4vw;
+    width: 4vw;
+    margin: 0 1vw 0 0;
 }
 .metadata .name{
     color:#00ccff ;
