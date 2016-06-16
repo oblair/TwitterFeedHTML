@@ -13,10 +13,11 @@ main{
     min-height: 100%;
     width: auto; 
     height: auto; 
-    background-size: contain;    
-    background-position: right top;
+    background-size: cover;    
+    background-position: 50%;
 /*    background-repeat: no-repeat;*/
     background-image: url(http://placehold.it/700x200);
+    
     
     z-index: -1;
     background-color: #444;
@@ -36,23 +37,21 @@ main .tweet-image{
     width:100%;
     height:auto;
     right:0;
+    bottom:0;
+    display: block;
+    visibility: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 article{
     background-color: rgba(0,0,0,0.95);
-/*    article size and max size is set in script*/
     position: absolute;
-    top:10%;
-    left:20%;
-}
-
-article.portrait{
-    max-width: 33%;
-    padding: 2vw;
-}
-article.landscape{
-    max-width: 26%;  
-    padding: 1vw;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    max-width: 640px;
+    padding:1em;
 }
 
 article p{
@@ -60,9 +59,12 @@ article p{
 }
 
 .tweet{
+    font-size: 2em;
+    margin:0 0 0.8em 0;
     color: #fff;
     line-height: 1.3;
 }
+/*
 .portrait .tweet{
     font-size: 3vw;
     margin: 0 0 4vw 0;
@@ -71,6 +73,7 @@ article p{
     font-size: 1.8vw;
     margin: 0 0 2vw 0;
 }
+*/
 
 
 .hashtag{
@@ -82,26 +85,15 @@ article p{
     color:#00ccff;
 }
 
-.portrait .metadata{
-    line-height: 2.7vw;
-    font-size: 2.5vw;
-}
-.landscape .metadata{
-    font-size: 1.3vw;
-    line-height: 1.5vw;
+.metadata{
+    font-size: 1.8em;
+    line-height: 1.2;
 }
 
-.portrait .metadata img{
-    height: 8vw;
-    width: 8vw;
+.metadata img{
+    height: 96px;
     float:left;
-    margin: 0 2vw 0 0;
-}
-
-.landscape .metadata img{
-    height: 4vw;
-    width: 4vw;
-    margin: 0 1vw 0 0;
+    margin: 0 1em 0 0;
 }
 .metadata .name{
     color:#00ccff ;
