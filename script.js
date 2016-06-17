@@ -59,13 +59,12 @@ function tick(){
 function displayTweet(tweet_index){
     $('.debug').html(tweet_index);
     $('.tweet').html(tweet_array[tweet_index].text);
-    $('.metadata img').attr('src', tweet_array[tweet_index].user.profile_image_url);
+    $('.profile-image').attr('src', tweet_array[tweet_index].user.profile_image_url);
     $('.name').html(tweet_array[tweet_index].user.name);
     $('.screen-name').html('@' + tweet_array[tweet_index].user.screen_name);
     $('.timestamp').html(parseTwitterDate(tweet_array[tweet_index].created_at));
     
 //    var tweet_text = tweet_array[tweet_index].text;
-    
     if(tweet_array[tweet_index].entities.media){
         // Tweet contains image
         var display_ratio = $(document).width() / $(document).height();
@@ -137,13 +136,19 @@ function displayTweet(tweet_index){
             'left': randomBetween(0, $(window).width() - $('article').outerWidth()) +'px',
         });
     }
-
     
     if(tweet_array[tweet_index].retweeted_status){
         $('.tweet-type').html('retweeted');
         
     }else{
         $('.tweet-type').html('tweeted');
+    }
+    
+    if(tweet_array[tweet_index].favorite_count > 0){
+        $('.fav-count').html(tweet_array[tweet_index].favorite_count);
+        $('.fav').css({'visibility':'visible'});
+    }else{
+        $('.fav').css({'visibility':'hidden'});
     }
     
     highlight('/(#)(\\w+)|(#)/', 'hashtag');

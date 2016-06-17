@@ -64,17 +64,6 @@ article p{
     color: #fff;
     line-height: 1.3;
 }
-/*
-.portrait .tweet{
-    font-size: 3vw;
-    margin: 0 0 4vw 0;
-}
-.landscape .tweet{
-    font-size: 1.8vw;
-    margin: 0 0 2vw 0;
-}
-*/
-
 
 .hashtag{
     background:transparent;
@@ -90,7 +79,7 @@ article p{
     line-height: 1.2;
 }
 
-.metadata img{
+.metadata .profile-image{
     height: 96px;
     float:left;
     margin: 0 1em 0 0;
@@ -110,7 +99,18 @@ article p{
     font-family: "ThreeSix 10 ExtraLight";
     color:#fff;
 }
-
+.metadata .fav{
+    font-family: "ThreeSix 10 ExtraLight";
+    color:#fff;
+    float:right;
+}
+.metadata .fav img{
+    height:1em;
+    line-height: 1em;
+    display: block;
+    float:right;
+    margin: 0 0 0 10px;
+}
 .debug{
     display: none;
 }
