@@ -8,10 +8,6 @@ var loops = 0;
 $(document).ready(function(){
     getTweets();
     initControl();
-    articlesize();
-    highlight('/(#)(\\w+)|(#)/', 'hashtag');
-    highlight('/(@)(\\w+)|(@)/', 'user');
-
 });
 
 $(window).resize(function(){
@@ -27,20 +23,17 @@ function reset(){
 };
 
 function getTweets(){
-    
     $.ajax({
 		url: 'get_tweets.php',
 		type: 'GET',
 		success: function(response) { 
             console.log(response.statuses);
-            
             for(i in response.statuses){
                 tweet_array.push(response.statuses[i]);
             }
-            
-            console.log(tweet_array.length);
-            if(count > tweet_array.length){count = tweet_array.length - 1;}
-
+            if(count > tweet_array.length){
+                count = tweet_array.length - 1;
+            }
             tick();
             timer =  setInterval(tick, delay);
 		},
@@ -50,7 +43,6 @@ function getTweets(){
 	});
 }
 
-
 function tick(){
     if(count < 0){
         count = 99;
@@ -59,40 +51,90 @@ function tick(){
             reset();
         }
     } else {
-        console.log(count)
         displayTweet(count);
         count--;
     }
 }
 
-
 function displayTweet(tweet_index){
     $('.debug').html(tweet_index);
     $('.tweet').html(tweet_array[tweet_index].text);
-    $('.metadata img').attr('src', tweet_array[tweet_index].user.profile_image_url);
+    $('.profile-image').attr('src', tweet_array[tweet_index].user.profile_image_url);
     $('.name').html(tweet_array[tweet_index].user.name);
     $('.screen-name').html('@' + tweet_array[tweet_index].user.screen_name);
     $('.timestamp').html(parseTwitterDate(tweet_array[tweet_index].created_at));
     
-    var tweet_text = tweet_array[tweet_index].text;
-    
+//    var tweet_text = tweet_array[tweet_index].text;
     if(tweet_array[tweet_index].entities.media){
+        // Tweet contains image
         var display_ratio = $(document).width() / $(document).height();
         var image_ratio = tweet_array[tweet_index].entities.media[0].sizes.large.w / tweet_array[tweet_index].entities.media[0].sizes.large.h
+        var top_left = randomBoolean();
         
         $('main').css({'background-image': 'url('+ tweet_array[tweet_index].entities.media[0].media_url +')'});
-        $('.tweet-image').attr({'src': tweet_array[tweet_index].entities.media[0].media_url}).css({'display': 'block'});
+        $('.tweet-image').attr({'src': tweet_array[tweet_index].entities.media[0].media_url}).css({'visibility':'visible'});
         if(display_ratio >= image_ratio){
             //image is narrow
-            $('main').css({'background-position': 'right top'});
             $('.tweet-image').css({'width': 'auto', 'height': '100%'});
+            if(top_left){
+                // image on left
+                console.log('left');
+                $('.tweet-image').css({
+                    'left': '0', 
+                    'right': 'auto'
+                });
+                $('article').css({
+                    'top': randomBetween(0, $(window).height() - $('article').outerHeight()) +'px',
+                    'right': '0',
+                    'bottom': 'auto',
+                    'left': 'auto'
+                });
+            }else{
+                // image on right
+                console.log('right');
+                $('.tweet-image').css({'left': 'auto', 'right': '0'});
+                $('article').css({
+                    'top': randomBetween(0, $(window).height() - $('article').outerHeight()) +'px',
+                    'right': 'auto',
+                    'bottom': 'auto',
+                    'left': '0'
+                });
+            }
         }else{
             //image is wide
             $('.tweet-image').css({'width': '100%', 'height': 'auto'});
+            if(top_left){
+                // image on top
+                console.log('top');
+                $('.tweet-image').css({'top': '0', 'bottom': 'auto'});
+                $('article').css({
+                    'top': 'auto',
+                    'right': 'auto',
+                    'bottom': '0',
+                    'left': randomBetween(0, $(window).width() - $('article').outerWidth()) +'px',
+                });
+            }else{
+                // image on bottom
+                console.log('bottom');
+                $('.tweet-image').css({'top': 'auto', 'bottom': '0'});
+                $('article').css({
+                    'top': '0',
+                    'right': 'auto',
+                    'bottom': 'auto',
+                    'left': randomBetween(0, $(window).width() - $('article').outerWidth()) +'px',
+                });
+            }
         }
     }else{
+        // Tweet contains no image
         $('main').css({'background-image': 'none'});
-        $('.tweet-image').attr({'src': '#'}).css({'display': 'none'});
+        $('.tweet-image').attr({'src': '#'}).css({'visibility':'hidden'});
+        $('article').css({
+            'top': randomBetween(0, $(window).height() - $('article').outerHeight()) +'px',
+            'right': 'auto',
+            'bottom': 'auto',
+            'left': randomBetween(0, $(window).width() - $('article').outerWidth()) +'px',
+        });
     }
     
     if(tweet_array[tweet_index].retweeted_status){
@@ -102,27 +144,22 @@ function displayTweet(tweet_index){
         $('.tweet-type').html('tweeted');
     }
     
+    if(tweet_array[tweet_index].favorite_count > 0){
+        $('.fav-count').html(tweet_array[tweet_index].favorite_count);
+        $('.fav').css({'visibility':'visible'});
+    }else{
+        $('.fav').css({'visibility':'hidden'});
+    }
+    
     highlight('/(#)(\\w+)|(#)/', 'hashtag');
     highlight('/(@)(\\w+)|(@)/', 'user'); 
     
-    articlesize();
+    //articlesize();
 }
 
 function articlesize(){
     // set article size
-    if ( $(window).width() > $(window).height() ) {
-        //landscape
-        $('article').css({
-            'max-width': ''+ ( $(window).width() / 3 ) +'px'
-        }).addClass('landscape')
-        .removeClass('portrait');
-    } else {
-        //portrait screen
-        $('article').css({
-            'max-width': ''+ ( $(window).width() / 1.5 ) +'px'
-        }).removeClass('landscape')
-        .addClass('portrait');
-    }
+    
     
     //random article position
     //tweet image?
@@ -143,9 +180,12 @@ function articlesize(){
 
 function initControl(){
     $('main').click(function(){
-//        clearInterval(timer);
         tick();
-//        window.alert("sometext");
+    });
+    $(document).keypress(function(e){
+        if(e.which == 32){  // space
+            clearInterval(timer);
+        }
     })
 }
 
@@ -188,3 +228,16 @@ var K = function () {
         ie: a.match(/MSIE\s([^;]*)/)
     }
 }();
+
+function randomBoolean(){
+    var r = Math.random();
+    if(r > 0.5){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function randomBetween(min, max){
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
